@@ -1,0 +1,40 @@
+#splash {
+    background: linear-gradient( #689ACA, #6669C9);   
+    height: 100%;
+    width: 100%;
+}
+
+#logo {
+    position: relative;
+    top: 140px;
+    width: 151px;
+    height: 200px;
+    animation-name: dropdown;
+    animation-duration: 1s;
+    display: block;
+    margin: 0 auto;
+}
+
+@keyframes dropdown {
+    from {top: -220px;}
+    to {top: 140px;}
+}
+
+#loadingGif{
+    position: relative;
+    top: 220px;
+    width: 67px;
+    height: 73px;
+    display: block;
+    margin: 0 auto;
+    animation-name: showLoading; 
+    animation-delay: 2s;
+    animation-duration: 0.2s;
+    animation-fill-mode: both;
+}
+
+@keyframes showLoading {
+    from {opacity: 0 }
+    to {opacity: 1  }
+}
+

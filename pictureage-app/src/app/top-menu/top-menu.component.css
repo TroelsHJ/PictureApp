@@ -1,0 +1,33 @@
+#topMenu {
+    height: 70px;
+    border-style: none;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-width: 3px; 
+}
+
+#logoTextImg {
+    position: absolute;
+    margin-left: 20px;
+    margin-top: 20px; 
+    width: 180px;
+    height: 40px;
+}
+
+#btnMenuIcon{
+    position: relative;
+    width: 30px; 
+    height: 25px;
+    margin-right: 20px; 
+    margin-top: 22px;
+    float: right; 
+}
+
+p {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+    font-size: 21px;
+    text-align: center;
+    line-height: 18px;
+    color:      #000000;
+    background-color:      #FFFFFF;
+}

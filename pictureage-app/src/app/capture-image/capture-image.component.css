@@ -1,0 +1,27 @@
+#video {
+    position: fixed;
+    top: 136px; 
+    width: 100%; 
+    padding: 20px;
+    display: block;
+    margin: 0 auto;
+}
+
+#canvas {
+    position: relative;
+    top: 50px; 
+    width: 100%; 
+    padding: 20px;
+    display: block;
+    margin: 0 auto;
+    height: 292px;
+}
+
+#btnPicture {
+    position: relative;
+    top: 100px; 
+    width: 75px; 
+    height: 75px;
+    display: block;
+    margin: 0 auto;
+}

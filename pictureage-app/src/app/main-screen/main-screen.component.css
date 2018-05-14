@@ -1,0 +1,23 @@
+#btnImg {
+    position: relative;
+    top: 100px;
+    width: 186px;
+    height: 180px;
+    display: block;
+    margin: 0 auto;
+}
+
+#dareTextBlock {
+    width: 212px;
+    height: 82px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+    font-size: 21px;
+    text-align: center;
+    line-height: 18px;
+    color:      #000000;
+    background-color:      #FFFFFF;
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    top: 120px; 
+}
