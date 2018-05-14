@@ -8,6 +8,7 @@
 
 # dependencies
 /node_modules
+/src/environments/environment.ts
 
 # IDEs and editors
 /.idea
@@ -44,7 +45,6 @@ testem.log
 Thumbs.db
 
 # Cordova 
-
 MobileApp/res
 MobileApp/hooks
 MobileApp/plugins
