@@ -3,13 +3,13 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 @Injectable()
 export class AppService {
-  constructor(private db: AngularFireDatabase) { this.SaveEntryToDatabase(2, "g"); }
+  constructor(private db: AngularFireDatabase) { }
 
   m_BASE64: string;
   m_BLOB: Blob;
   m_Age: number;
 
-  m_Pictures: Picture[] = [];
+  // m_Pictures: Picture[] = [];
 
 
 
@@ -27,44 +27,44 @@ export class AppService {
 
   SaveAge(_ageGuess: number) {
     this.m_Age = _ageGuess;
-    this.SaveEntryToDatabase(this.m_Age, this.m_BASE64);
+    // this.SaveEntryToDatabase(this.m_Age, this.m_BASE64);
   }
 
   GetAgeGuess() {
     return this.m_Age;
   }
 
-  SaveEntryToDatabase(_age: number, _base64: string) {
+  // SaveEntryToDatabase(_age: number, _base64: string) {
 
-    var _tempConnection = this.db.list('Pictures');
-    let v = {
-      Picture: "test",
-      Base64: "test",
-      Age: 39
-    }
-    console.log("yay");
-    _tempConnection.snapshotChanges().subscribe(item => {
-      console.log("g");
-      item.forEach(element => {
-        var y = element.payload.toJSON();
-        y["$key"] = element.key;
-      });
-    });
-    //_tempConnection.push(v);
-    // _tempConnection.snapshotChanges().subscribe(item => {
-    //   item.forEach(element => {
-    //     let y = element.payload.toJSON();
-    //     //y["$key"] = element.key;
-    //     //this.m_Pictures.push(y as Picture);
-    //     console.log(y);
-    //   });
-    // });
+  //   var _tempConnection = this.db.list('Pictures');
+  //   let v = {
+  //     Picture: "test",
+  //     Base64: "test",
+  //     Age: 39
+  //   }
+  //   console.log("yay");
+  //   _tempConnection.snapshotChanges().subscribe(item => {
+  //     console.log("g");
+  //     item.forEach(element => {
+  //       var y = element.payload.toJSON();
+  //       y["$key"] = element.key;
+  //     });
+  //   });
+  //   //_tempConnection.push(v);
+  //   // _tempConnection.snapshotChanges().subscribe(item => {
+  //   //   item.forEach(element => {
+  //   //     let y = element.payload.toJSON();
+  //   //     //y["$key"] = element.key;
+  //   //     //this.m_Pictures.push(y as Picture);
+  //   //     console.log(y);
+  //   //   });
+  //   // });
 
-  }
+  // }
 
 }
 
-interface Picture {
-  BASE64: string;
-  AGE: number;
-}
+// interface Picture {
+//   BASE64: string;
+//   AGE: number;
+// }

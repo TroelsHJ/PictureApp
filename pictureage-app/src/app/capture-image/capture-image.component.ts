@@ -43,6 +43,8 @@ export class CaptureImageComponent implements OnInit {
   ProcessImage(_returnFunction: any) {
     let canvas = this.m_canvas.nativeElement;
     let context = canvas.getContext('2d');
+    context.translate(300, 0);
+    context.scale(-1, 1);
     let image = context.drawImage(this.m_video, 0, 0, 1024, 1024, 0, 0, 480, 320);
     let dataURL = canvas.toDataURL();
     _returnFunction(dataURL);
