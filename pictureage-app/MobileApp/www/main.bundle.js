@@ -300,6 +300,7 @@ var AppService = /** @class */ (function () {
     // m_Pictures: Picture[] = [];
     AppService.prototype.SaveBASE64 = function (_imgDataBASE64) {
         this.m_BASE64 = _imgDataBASE64;
+        console.log(this.m_BASE64);
     };
     AppService.prototype.GetBASE64 = function () {
         return this.m_BASE64;
@@ -441,7 +442,6 @@ module.exports = "<app-top-menu></app-top-menu>\r\n<div id=\"main\">\r\n  <img i
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MainScreenComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -452,16 +452,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
 var MainScreenComponent = /** @class */ (function () {
-    function MainScreenComponent(Router) {
-        this.Router = Router;
+    function MainScreenComponent() {
         this.m_dareText = "Dare you to press the camera and see how old we think you are";
     }
     MainScreenComponent.prototype.ngOnInit = function () {
+        // alert(device.platform)
     };
     MainScreenComponent.prototype.takePicture = function () {
-        this.Router.navigate(["/take-picture"]);
+        if (device.platform == "Android") {
+            document.addEventListener("deviceready", this.openCamera);
+        }
+        else if (device.platform == "browser") {
+            this.Router.navigate(["/take-picture"]);
+        }
+    };
+    MainScreenComponent.prototype.openCamera = function () {
+        var _this = this;
+        navigator.camera.getPicture(function (BASE64_URL) {
+            document.addEventListener("resume", function () {
+                // alert(BASE64_URL);
+                // this.AppService.SaveBASE64(BASE64_URL);
+                _this.Router.navigate(["/proces-picture"]);
+            });
+        }, function (error) {
+            alert("Unable to obtain camera app: " + error);
+        }, {
+            sourceType: 1,
+            quality: 50,
+            destinationType: 0,
+            allowEdit: false,
+            correctOrientation: true,
+            cameraDirection: 0,
+        });
     };
     MainScreenComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -469,7 +492,7 @@ var MainScreenComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/main-screen/main-screen.component.html"),
             styles: [__webpack_require__("./src/app/main-screen/main-screen.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
+        __metadata("design:paramtypes", [])
     ], MainScreenComponent);
     return MainScreenComponent;
 }());
@@ -501,6 +524,7 @@ module.exports = "<div id=\"processing\">\r\n  <img id=\"picture\" src={{m_imgDa
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_service__ = __webpack_require__("./src/app/app.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -510,6 +534,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -562,7 +587,7 @@ var ProcessImageComponent = /** @class */ (function () {
         var url = "https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/analyze?visualFeatures=Tags,Faces";
         var httpHeaders = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]()
             .set('Content-Type', 'application/octet-stream')
-            .set('ocp-apim-subscription-key', '');
+            .set('ocp-apim-subscription-key', __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].visonConfig.apiKey);
         return this.http.post(url, _imgDataBlob, {
             headers: httpHeaders,
             responseType: 'json'
@@ -717,9 +742,12 @@ var environment = {
         projectId: "pictureage-f438b",
         storageBucket: "pictureage-f438b.appspot.com",
         messagingSenderId: "330143653742"
+    },
+    visonConfig: {
+        apiKey: "1e778772e98e402d821ec1337f6d6ee8"
     }
 };
-// hjjejjdnn 
+// 1f4c853d821a41088d70abf594c7064e
 
 
 /***/ }),

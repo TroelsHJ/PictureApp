@@ -11,10 +11,9 @@ export class AppService {
 
   // m_Pictures: Picture[] = [];
 
-
-
-  SaveBASE64(_imgDataBASE64: string) {
+  public SaveBASE64(_imgDataBASE64: string) {
     this.m_BASE64 = _imgDataBASE64;
+    console.log(this.m_BASE64);
   }
 
   GetBASE64(): string {

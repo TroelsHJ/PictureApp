@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 import { AppService } from './../app.service';
+import { environment } from '../../environments/environment'
+
 
 
 @Component({
@@ -72,7 +74,8 @@ export class ProcessImageComponent implements OnInit {
 
     let httpHeaders = new HttpHeaders()
       .set('Content-Type', 'application/octet-stream')
-      .set('ocp-apim-subscription-key', '');
+      // .set('ocp-apim-subscription-key', '');
+      .set('ocp-apim-subscription-key', environment.visonConfig.apiKey);
 
     return this.http.post<any[]>(url, _imgDataBlob, {
       headers: httpHeaders,
