@@ -1,23 +1,25 @@
+
 #picture{
-    position: fixed;
-    top: 136px; 
-    width: 100%; 
+    border:1px solid red;
+    width: 80%; 
     padding: 20px;
     display: block;
     margin: 0 auto;
+    margin-top: 20px;
     height: 292px;
 }
 
 #searchGif {
-    position: relative;
-    top: 430px;
+    border:1px solid black;
     width: 100px;
     height: 100px;
     display: block;
     margin: 0 auto;
+    margin-bottom:0px;
 }
 
 #processingTextBlock {
+    border:1px solid green;
     width: 180px;
     height: 60px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
@@ -28,7 +30,4 @@
     background-color:      #FFFFFF;
     display: block;
     margin: 0 auto;
-    position: relative;
-    top: 450px; 
-
 }

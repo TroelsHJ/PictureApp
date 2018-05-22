@@ -262,7 +262,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_5_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_7__environments_environment__["a" /* environment */].firebaseConfig),
-                __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["b" /* AngularFireDatabaseModule */]
+                __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabaseModule */]
             ],
             providers: [__WEBPACK_IMPORTED_MODULE_11__app_service__["a" /* AppService */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
@@ -281,7 +281,6 @@ var AppModule = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__("./node_modules/angularfire2/database/index.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -292,15 +291,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-
 var AppService = /** @class */ (function () {
-    function AppService(db) {
-        this.db = db;
+    function AppService() {
     }
     // m_Pictures: Picture[] = [];
     AppService.prototype.SaveBASE64 = function (_imgDataBASE64) {
         this.m_BASE64 = _imgDataBASE64;
-        console.log(this.m_BASE64);
+        console.log("det er fedt det hele");
     };
     AppService.prototype.GetBASE64 = function () {
         return this.m_BASE64;
@@ -317,7 +314,7 @@ var AppService = /** @class */ (function () {
     };
     AppService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_angularfire2_database__["a" /* AngularFireDatabase */]])
+        __metadata("design:paramtypes", [])
     ], AppService);
     return AppService;
 }());
@@ -442,6 +439,8 @@ module.exports = "<app-top-menu></app-top-menu>\r\n<div id=\"main\">\r\n  <img i
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MainScreenComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_service__ = __webpack_require__("./src/app/app.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -452,16 +451,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var MainScreenComponent = /** @class */ (function () {
-    function MainScreenComponent() {
+    function MainScreenComponent(AppService, Router) {
+        this.AppService = AppService;
+        this.Router = Router;
         this.m_dareText = "Dare you to press the camera and see how old we think you are";
     }
-    MainScreenComponent.prototype.ngOnInit = function () {
-        // alert(device.platform)
-    };
     MainScreenComponent.prototype.takePicture = function () {
         if (device.platform == "Android") {
-            document.addEventListener("deviceready", this.openCamera);
+            // document.addEventListener("deviceready", this.openCamera.bind(this));
+            this.openCamera();
         }
         else if (device.platform == "browser") {
             this.Router.navigate(["/take-picture"]);
@@ -469,12 +470,9 @@ var MainScreenComponent = /** @class */ (function () {
     };
     MainScreenComponent.prototype.openCamera = function () {
         var _this = this;
-        navigator.camera.getPicture(function (BASE64_URL) {
-            document.addEventListener("resume", function () {
-                // alert(BASE64_URL);
-                // this.AppService.SaveBASE64(BASE64_URL);
-                _this.Router.navigate(["/proces-picture"]);
-            });
+        navigator.camera.getPicture(function (data) {
+            _this.AppService.SaveBASE64(data);
+            _this.Router.navigate(["/proces-picture"]);
         }, function (error) {
             alert("Unable to obtain camera app: " + error);
         }, {
@@ -492,7 +490,8 @@ var MainScreenComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/main-screen/main-screen.component.html"),
             styles: [__webpack_require__("./src/app/main-screen/main-screen.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__app_service__["a" /* AppService */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
     ], MainScreenComponent);
     return MainScreenComponent;
 }());
@@ -504,14 +503,14 @@ var MainScreenComponent = /** @class */ (function () {
 /***/ "./src/app/process-image/process-image.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "#picture{\r\n    position: fixed;\r\n    top: 136px; \r\n    width: 100%; \r\n    padding: 20px;\r\n    display: block;\r\n    margin: 0 auto;\r\n    height: 292px;\r\n}\r\n\r\n#searchGif {\r\n    position: relative;\r\n    top: 430px;\r\n    width: 100px;\r\n    height: 100px;\r\n    display: block;\r\n    margin: 0 auto;\r\n}\r\n\r\n#processingTextBlock {\r\n    width: 180px;\r\n    height: 60px;\r\n    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; \r\n    font-size: 21px;\r\n    text-align: center;\r\n    line-height: 18px;\r\n    color:      #000000;\r\n    background-color:      #FFFFFF;\r\n    display: block;\r\n    margin: 0 auto;\r\n    position: relative;\r\n    top: 450px; \r\n\r\n}"
+module.exports = "\r\n#picture{\r\n    border:1px solid red;\r\n    width: 80%; \r\n    padding: 20px;\r\n    display: block;\r\n    margin: 0 auto;\r\n    margin-top: 20px;\r\n    height: 292px;\r\n}\r\n\r\n#searchGif {\r\n    border:1px solid black;\r\n    width: 100px;\r\n    height: 100px;\r\n    display: block;\r\n    margin: 0 auto;\r\n    margin-bottom:0px;\r\n}\r\n\r\n#processingTextBlock {\r\n    border:1px solid green;\r\n    width: 180px;\r\n    height: 60px;\r\n    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; \r\n    font-size: 21px;\r\n    text-align: center;\r\n    line-height: 18px;\r\n    color:      #000000;\r\n    background-color:      #FFFFFF;\r\n    display: block;\r\n    margin: 0 auto;\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/process-image/process-image.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"processing\">\r\n  <img id=\"picture\" src={{m_imgDataBASE64}}>\r\n  <img id=\"searchGif\" src=\"./assets/Images/Magnify-1s-200px.gif\">\r\n  <p id=\"processingTextBlock\">\r\n    {{m_processingText}}\r\n  </p>\r\n</div>"
+module.exports = "<img id=\"picture\" src={{m_imgDataBASE64}}>\r\n<img id=\"searchGif\" src=\"./assets/Images/Magnify-1s-200px.gif\">\r\n<p id=\"processingTextBlock\">\r\n  <!-- {{m_processingText}} -->\r\n  Asking around..\r\n</p>"
 
 /***/ }),
 
@@ -548,6 +547,7 @@ var ProcessImageComponent = /** @class */ (function () {
     }
     ProcessImageComponent.prototype.ngOnInit = function () {
         var _this = this;
+        alert(this.AppService.GetBASE64());
         this.m_imgDataBASE64 = this.AppService.GetBASE64();
         this.m_imgDataBlob = this.MakeBlob(this.m_imgDataBASE64);
         this.AppService.SaveBlob(this.m_imgDataBlob);

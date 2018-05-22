@@ -28,6 +28,7 @@ export class ProcessImageComponent implements OnInit {
 
 
   ngOnInit() {
+    alert(this.AppService.GetBASE64())
     this.m_imgDataBASE64 = this.AppService.GetBASE64();
     this.m_imgDataBlob = this.MakeBlob(this.m_imgDataBASE64);
     this.AppService.SaveBlob(this.m_imgDataBlob);

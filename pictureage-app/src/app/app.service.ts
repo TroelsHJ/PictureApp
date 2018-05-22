@@ -3,8 +3,9 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 @Injectable()
 export class AppService {
-  constructor(private db: AngularFireDatabase) { }
-
+  constructor(
+    // private db: AngularFireDatabase
+  ) { }
   m_BASE64: string;
   m_BLOB: Blob;
   m_Age: number;
@@ -13,10 +14,10 @@ export class AppService {
 
   public SaveBASE64(_imgDataBASE64: string) {
     this.m_BASE64 = _imgDataBASE64;
-    console.log(this.m_BASE64);
+    console.log("det er fedt det hele");
   }
 
-  GetBASE64(): string {
+  GetBASE64() {
     return this.m_BASE64;
   }
 
