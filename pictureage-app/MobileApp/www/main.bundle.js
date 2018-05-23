@@ -20,14 +20,14 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /***/ "./src/app/age-result/age-result.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "#picture{\r\n    position: fixed;\r\n    top: 136px; \r\n    width: 100%; \r\n    padding: 20px;\r\n    display: block;\r\n    margin: 0 auto;\r\n    height: 292px;\r\n}\r\n\r\n#resultTextBlock {\r\n    width: 180px;\r\n    height: 60px;\r\n    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; \r\n    font-size: 21px;\r\n    text-align: center;\r\n    line-height: 18px;\r\n    color:      #000000;\r\n    background-color:      #FFFFFF;\r\n    display: block;\r\n    margin: 0 auto;\r\n    position: relative;\r\n    top: 450px; \r\n\r\n}"
+module.exports = "#picture{\r\n    position: fixed;\r\n    top: 136px; \r\n    /* width: 100%;  */\r\n    padding: 20px;\r\n    display: block;\r\n    margin: 0 auto;\r\n    height: 292px;\r\n}\r\n\r\n#resultTextBlock {\r\n    width: 180px;\r\n    height: 60px;\r\n    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; \r\n    font-size: 21px;\r\n    text-align: center;\r\n    line-height: 18px;\r\n    color:      #000000;\r\n    background-color:      #FFFFFF;\r\n    display: block;\r\n    margin: 0 auto;\r\n    position: relative;\r\n    top: 450px; \r\n\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/age-result/age-result.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-top-menu></app-top-menu>\r\n<div id=\"result\">\r\n  <img id=\"picture\" src={{m_imgDataBASE64}}>\r\n  <p id=\"resultTextBlock\">\r\n    {{m_resultText}}\r\n</div>"
+module.exports = "<app-top-menu></app-top-menu>\r\n<div id=\"result\">\r\n  <img id=\"picture\" src=\"data:image/jpg;base64,{{m_imgDataBASE64}}\">\r\n  <p id=\"resultTextBlock\">\r\n    {{m_resultText}}\r\n</div>"
 
 /***/ }),
 
@@ -208,18 +208,17 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_routing_module__ = __webpack_require__("./src/app/app-routing.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/animations.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2__ = __webpack_require__("./node_modules/angularfire2/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__ = __webpack_require__("./node_modules/angularfire2/database/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_component__ = __webpack_require__("./src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__capture_image_capture_image_component__ = __webpack_require__("./src/app/capture-image/capture-image.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__process_image_process_image_component__ = __webpack_require__("./src/app/process-image/process-image.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_service__ = __webpack_require__("./src/app/app.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__splash_screen_splash_screen_component__ = __webpack_require__("./src/app/splash-screen/splash-screen.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__age_result_age_result_component__ = __webpack_require__("./src/app/age-result/age-result.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__top_menu_top_menu_component__ = __webpack_require__("./src/app/top-menu/top-menu.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__main_screen_main_screen_component__ = __webpack_require__("./src/app/main-screen/main-screen.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2__ = __webpack_require__("./node_modules/angularfire2/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__ = __webpack_require__("./node_modules/angularfire2/database/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__("./src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__capture_image_capture_image_component__ = __webpack_require__("./src/app/capture-image/capture-image.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__process_image_process_image_component__ = __webpack_require__("./src/app/process-image/process-image.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_service__ = __webpack_require__("./src/app/app.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__splash_screen_splash_screen_component__ = __webpack_require__("./src/app/splash-screen/splash-screen.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__age_result_age_result_component__ = __webpack_require__("./src/app/age-result/age-result.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__top_menu_top_menu_component__ = __webpack_require__("./src/app/top-menu/top-menu.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__main_screen_main_screen_component__ = __webpack_require__("./src/app/main-screen/main-screen.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -230,7 +229,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -248,24 +247,24 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__capture_image_capture_image_component__["a" /* CaptureImageComponent */],
-                __WEBPACK_IMPORTED_MODULE_10__process_image_process_image_component__["a" /* ProcessImageComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__splash_screen_splash_screen_component__["a" /* SplashScreenComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__age_result_age_result_component__["a" /* AgeResultComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__top_menu_top_menu_component__["a" /* TopMenuComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__main_screen_main_screen_component__["a" /* MainScreenComponent */]
+                __WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__capture_image_capture_image_component__["a" /* CaptureImageComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__process_image_process_image_component__["a" /* ProcessImageComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__splash_screen_splash_screen_component__["a" /* SplashScreenComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__age_result_age_result_component__["a" /* AgeResultComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__top_menu_top_menu_component__["a" /* TopMenuComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__main_screen_main_screen_component__["a" /* MainScreenComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2__app_routing_module__["a" /* AppRoutingModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["b" /* HttpClientModule */],
-                __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
-                __WEBPACK_IMPORTED_MODULE_5_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_7__environments_environment__["a" /* environment */].firebaseConfig),
-                __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabaseModule */]
+                // BrowserAnimationsModule,
+                __WEBPACK_IMPORTED_MODULE_4_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */].firebaseConfig),
+                __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__["a" /* AngularFireDatabaseModule */]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_11__app_service__["a" /* AppService */]],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_10__app_service__["a" /* AppService */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -297,17 +296,18 @@ var AppService = /** @class */ (function () {
     // m_Pictures: Picture[] = [];
     AppService.prototype.SaveBASE64 = function (_imgDataBASE64) {
         this.m_BASE64 = _imgDataBASE64;
-        console.log("det er fedt det hele");
     };
     AppService.prototype.GetBASE64 = function () {
         return this.m_BASE64;
     };
-    AppService.prototype.SaveBlob = function (_imgDataBlob) {
-        this.m_BLOB = _imgDataBlob;
+    AppService.prototype.SaveLocalPath = function (_imgPath) {
+        this.m_ImgPath = _imgPath;
+    };
+    AppService.prototype.GetLocalPath = function () {
+        return this.m_ImgPath;
     };
     AppService.prototype.SaveAge = function (_ageGuess) {
         this.m_Age = _ageGuess;
-        // this.SaveEntryToDatabase(this.m_Age, this.m_BASE64);
     };
     AppService.prototype.GetAgeGuess = function () {
         return this.m_Age;
@@ -454,15 +454,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var MainScreenComponent = /** @class */ (function () {
-    function MainScreenComponent(AppService, Router) {
+    function MainScreenComponent(AppService, Router, Zone) {
         this.AppService = AppService;
         this.Router = Router;
+        this.Zone = Zone;
         this.m_dareText = "Dare you to press the camera and see how old we think you are";
     }
     MainScreenComponent.prototype.takePicture = function () {
         if (device.platform == "Android") {
-            // document.addEventListener("deviceready", this.openCamera.bind(this));
-            this.openCamera();
+            document.addEventListener("deviceready", this.openCamera.bind(this));
+            // this.openCamera();
         }
         else if (device.platform == "browser") {
             this.Router.navigate(["/take-picture"]);
@@ -472,7 +473,9 @@ var MainScreenComponent = /** @class */ (function () {
         var _this = this;
         navigator.camera.getPicture(function (data) {
             _this.AppService.SaveBASE64(data);
-            _this.Router.navigate(["/proces-picture"]);
+            _this.Zone.run(function () {
+                _this.Router.navigate(["/proces-picture"]);
+            });
         }, function (error) {
             alert("Unable to obtain camera app: " + error);
         }, {
@@ -491,7 +494,8 @@ var MainScreenComponent = /** @class */ (function () {
             styles: [__webpack_require__("./src/app/main-screen/main-screen.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__app_service__["a" /* AppService */],
-            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
+            __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* NgZone */]])
     ], MainScreenComponent);
     return MainScreenComponent;
 }());
@@ -503,14 +507,14 @@ var MainScreenComponent = /** @class */ (function () {
 /***/ "./src/app/process-image/process-image.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n#picture{\r\n    border:1px solid red;\r\n    width: 80%; \r\n    padding: 20px;\r\n    display: block;\r\n    margin: 0 auto;\r\n    margin-top: 20px;\r\n    height: 292px;\r\n}\r\n\r\n#searchGif {\r\n    border:1px solid black;\r\n    width: 100px;\r\n    height: 100px;\r\n    display: block;\r\n    margin: 0 auto;\r\n    margin-bottom:0px;\r\n}\r\n\r\n#processingTextBlock {\r\n    border:1px solid green;\r\n    width: 180px;\r\n    height: 60px;\r\n    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; \r\n    font-size: 21px;\r\n    text-align: center;\r\n    line-height: 18px;\r\n    color:      #000000;\r\n    background-color:      #FFFFFF;\r\n    display: block;\r\n    margin: 0 auto;\r\n}"
+module.exports = "\r\n#picture{\r\n    padding: 20px;\r\n    display: block;\r\n    margin: 0 auto;\r\n    margin-top: 20px;\r\n    margin-bottom: 20px;\r\n    height: 292px;\r\n}\r\n\r\n#searchGif {\r\n    width: 100px;\r\n    height: 100px;\r\n    display: block;\r\n    margin: 0 auto;\r\n    margin-bottom:0px;\r\n}\r\n\r\n#processingTextBlock {\r\n    width: 180px;\r\n    height: 60px;\r\n    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; \r\n    font-size: 21px;\r\n    text-align: center;\r\n    line-height: 18px;\r\n    color:      #000000;\r\n    background-color:      #FFFFFF;\r\n    display: block;\r\n    margin: 0 auto;\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/process-image/process-image.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<img id=\"picture\" src={{m_imgDataBASE64}}>\r\n<img id=\"searchGif\" src=\"./assets/Images/Magnify-1s-200px.gif\">\r\n<p id=\"processingTextBlock\">\r\n  <!-- {{m_processingText}} -->\r\n  Asking around..\r\n</p>"
+module.exports = "<img id=\"picture\" src=\"data:image/jpg;base64,{{m_imgDataBASE64}}\">\r\n<img id=\"searchGif\" src=\"./assets/Images/Magnify-1s-200px.gif\">\r\n<p id=\"processingTextBlock\">\r\n  {{m_processingText}}\r\n</p>"
 
 /***/ }),
 
@@ -547,10 +551,8 @@ var ProcessImageComponent = /** @class */ (function () {
     }
     ProcessImageComponent.prototype.ngOnInit = function () {
         var _this = this;
-        alert(this.AppService.GetBASE64());
         this.m_imgDataBASE64 = this.AppService.GetBASE64();
         this.m_imgDataBlob = this.MakeBlob(this.m_imgDataBASE64);
-        this.AppService.SaveBlob(this.m_imgDataBlob);
         this.CallObserver(this.m_imgDataBlob);
         setTimeout(function () {
             _this.Router.navigate(["/age-result"]);

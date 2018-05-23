@@ -1,38 +1,43 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class AppService {
   constructor(
     // private db: AngularFireDatabase
   ) { }
+
   m_BASE64: string;
-  m_BLOB: Blob;
+  m_ImgPath: string;
   m_Age: number;
 
   // m_Pictures: Picture[] = [];
 
-  public SaveBASE64(_imgDataBASE64: string) {
+  SaveBASE64(_imgDataBASE64: string) {
     this.m_BASE64 = _imgDataBASE64;
-    console.log("det er fedt det hele");
   }
 
   GetBASE64() {
     return this.m_BASE64;
   }
 
-  SaveBlob(_imgDataBlob: Blob) {
-    this.m_BLOB = _imgDataBlob;
+  SaveLocalPath(_imgPath: string) {
+    this.m_ImgPath = _imgPath;
+  }
+
+  GetLocalPath() {
+    return this.m_ImgPath;
   }
 
   SaveAge(_ageGuess: number) {
     this.m_Age = _ageGuess;
-    // this.SaveEntryToDatabase(this.m_Age, this.m_BASE64);
   }
 
   GetAgeGuess() {
     return this.m_Age;
   }
+
 
   // SaveEntryToDatabase(_age: number, _base64: string) {
 

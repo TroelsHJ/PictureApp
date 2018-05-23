@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AppService } from './../app.service';
@@ -18,12 +18,13 @@ export class MainScreenComponent {
   constructor(
     private AppService: AppService,
     private Router: Router,
+    private Zone: NgZone,
   ) { }
 
   takePicture() {
     if (device.platform == "Android") {
-      // document.addEventListener("deviceready", this.openCamera.bind(this));
-      this.openCamera();
+      document.addEventListener("deviceready", this.openCamera.bind(this));
+      // this.openCamera();
     }
     else if (device.platform == "browser") {
       this.Router.navigate(["/take-picture"]);
@@ -34,7 +35,9 @@ export class MainScreenComponent {
     navigator.camera.getPicture(
       (data) => {
         this.AppService.SaveBASE64(data)
-        this.Router.navigate(["/proces-picture"]);
+        this.Zone.run(() => {
+          this.Router.navigate(["/proces-picture"]);
+        })
       },
       (error) => {
         alert("Unable to obtain camera app: " + error);

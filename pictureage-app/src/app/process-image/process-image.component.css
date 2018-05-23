@@ -1,16 +1,14 @@
 
 #picture{
-    border:1px solid red;
-    width: 80%; 
     padding: 20px;
     display: block;
     margin: 0 auto;
     margin-top: 20px;
+    margin-bottom: 20px;
     height: 292px;
 }
 
 #searchGif {
-    border:1px solid black;
     width: 100px;
     height: 100px;
     display: block;
@@ -19,7 +17,6 @@
 }
 
 #processingTextBlock {
-    border:1px solid green;
     width: 180px;
     height: 60px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 

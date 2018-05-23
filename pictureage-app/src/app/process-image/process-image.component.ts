@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 import { AppService } from './../app.service';
 import { environment } from '../../environments/environment'
-
-
 
 @Component({
   selector: 'app-process-image',
@@ -15,7 +13,7 @@ import { environment } from '../../environments/environment'
 })
 export class ProcessImageComponent implements OnInit {
 
-  m_imgDataBASE64: string;
+  m_imgDataBASE64: any;
   m_imgDataBlob: Blob;
   m_ageGuess: number;
   m_processingText: string = "Asking around..";
@@ -23,15 +21,12 @@ export class ProcessImageComponent implements OnInit {
   constructor(
     private AppService: AppService,
     private Router: Router,
-    private http: HttpClient
+    private http: HttpClient,
   ) { }
 
-
   ngOnInit() {
-    alert(this.AppService.GetBASE64())
     this.m_imgDataBASE64 = this.AppService.GetBASE64();
     this.m_imgDataBlob = this.MakeBlob(this.m_imgDataBASE64);
-    this.AppService.SaveBlob(this.m_imgDataBlob);
     this.CallObserver(this.m_imgDataBlob);
     setTimeout(() => {
       this.Router.navigate(["/age-result"]);
@@ -75,7 +70,6 @@ export class ProcessImageComponent implements OnInit {
 
     let httpHeaders = new HttpHeaders()
       .set('Content-Type', 'application/octet-stream')
-      // .set('ocp-apim-subscription-key', '');
       .set('ocp-apim-subscription-key', environment.visonConfig.apiKey);
 
     return this.http.post<any[]>(url, _imgDataBlob, {
