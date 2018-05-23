@@ -462,11 +462,14 @@ var MainScreenComponent = /** @class */ (function () {
     }
     MainScreenComponent.prototype.takePicture = function () {
         if (device.platform == "Android") {
+            // Found it necessary to to use '.bind()' in order to maintain the scope/context. 
+            // The AppService and Router are available to the component class, and the context is lost in a 
             document.addEventListener("deviceready", this.openCamera.bind(this));
             // this.openCamera();
         }
         else if (device.platform == "browser") {
-            this.Router.navigate(["/take-picture"]);
+            // this.Router.navigate(["/take-picture"]);
+            this.openCamera();
         }
     };
     MainScreenComponent.prototype.openCamera = function () {
