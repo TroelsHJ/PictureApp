@@ -26,31 +26,11 @@ export class ProcessImageComponent implements OnInit {
 
   ngOnInit() {
     this.m_imgDataBASE64 = this.AppService.GetBASE64();
-    this.m_imgDataBlob = this.MakeBlob(this.m_imgDataBASE64);
+    this.m_imgDataBlob = this.AppService.MakeAndGetBlob();
     this.CallObserver(this.m_imgDataBlob);
     setTimeout(() => {
       this.Router.navigate(["/age-result"]);
     }, 3000);
-  }
-
-  MakeBlob(_imgData: any): Blob {
-    let BASE64_MARKER = ';base64,';
-    if (_imgData.indexOf(BASE64_MARKER) == -1) {
-      let parts = _imgData.split(',');
-      let contentType = parts[0].split(':')[1];
-      let raw = decodeURIComponent(parts[1]);
-      return new Blob([raw], { type: contentType });
-    }
-    let parts = _imgData.split(BASE64_MARKER);
-    let contentType = parts[0].split(':')[1];
-    let raw = window.atob(parts[1]);
-    let rawLength = raw.length;
-    let uInt8Array = new Uint8Array(rawLength);
-
-    for (let i = 0; i < rawLength; ++i) {
-      uInt8Array[i] = raw.charCodeAt(i);
-    }
-    return new Blob([uInt8Array], { type: contentType });
   }
 
   CallObserver(_imgDataBlob: Blob) {
@@ -61,7 +41,7 @@ export class ProcessImageComponent implements OnInit {
           this.m_ageGuess = this.FilterDataFromURL(value);
           this.AppService.SaveAge(this.m_ageGuess);
         },
-        (error) => { console.log(error) }
+        (error) => { console.log(error)}
       )
   }
 
@@ -72,6 +52,7 @@ export class ProcessImageComponent implements OnInit {
       .set('Content-Type', 'application/octet-stream')
       .set('ocp-apim-subscription-key', environment.visonConfig.apiKey);
 
+    console.log(_imgDataBlob);
     return this.http.post<any[]>(url, _imgDataBlob, {
       headers: httpHeaders,
       responseType: 'json'

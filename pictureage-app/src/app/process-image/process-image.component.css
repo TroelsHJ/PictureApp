@@ -1,11 +1,12 @@
-
 #picture{
     padding: 20px;
     display: block;
     margin: 0 auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 78px;
+    margin-bottom: 5px;
     height: 292px;
+    -webkit-transfrom: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 #searchGif {

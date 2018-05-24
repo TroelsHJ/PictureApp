@@ -38,6 +38,25 @@ export class AppService {
     return this.m_Age;
   }
 
+  MakeAndGetBlob(): Blob {
+    let BASE64_MARKER = ';base64,';
+    if (this.m_BASE64.indexOf(BASE64_MARKER) == -1) {
+      let parts = this.m_BASE64.split(',');
+      let contentType = parts[0].split(':')[1];
+      let raw = decodeURIComponent(parts[1]);
+      return new Blob([raw], { type: contentType });
+    }
+    let parts = this.m_BASE64.split(BASE64_MARKER);
+    let contentType = parts[0].split(':')[1];
+    let raw = window.atob(parts[1]);
+    let rawLength = raw.length;
+    let uInt8Array = new Uint8Array(rawLength);
+
+    for (let i = 0; i < rawLength; ++i) {
+      uInt8Array[i] = raw.charCodeAt(i);
+    }
+    return new Blob([uInt8Array], { type: contentType });
+  }
 
   // SaveEntryToDatabase(_age: number, _base64: string) {
 

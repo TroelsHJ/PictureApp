@@ -49,7 +49,7 @@ export class MainScreenComponent {
 
     navigator.camera.getPicture(
       (data) => {
-        this.AppService.SaveBASE64(data);
+        this.AppService.SaveBASE64("data:image/png;base64," + data);
         this.Zone.run(() => {
           this.Router.navigate(["/proces-picture"]);
         })
@@ -59,11 +59,12 @@ export class MainScreenComponent {
       },
       {
         sourceType: 1,
-        quality: 50,
+        quality: 100,
         destinationType: 0,
         allowEdit: false,
         correctOrientation: true,
-        cameraDirection: 0
+        cameraDirection: 1,
+        encodingType: 0
       }
     );
 

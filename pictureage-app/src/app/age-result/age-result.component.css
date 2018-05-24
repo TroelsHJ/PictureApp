@@ -1,11 +1,13 @@
 #picture{
-    position: fixed;
-    top: 136px; 
-    /* width: 100%;  */
     padding: 20px;
     display: block;
     margin: 0 auto;
+    margin-top: 5px;
+    margin-bottom: 20px;
     height: 292px;
+    -webkit-transfrom: scaleX(-1);
+    transform: scaleX(-1);
+
 }
 
 #resultTextBlock {
@@ -19,7 +21,4 @@
     background-color:      #FFFFFF;
     display: block;
     margin: 0 auto;
-    position: relative;
-    top: 450px; 
-
 }

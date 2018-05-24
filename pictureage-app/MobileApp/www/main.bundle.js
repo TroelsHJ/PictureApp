@@ -20,14 +20,14 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /***/ "./src/app/age-result/age-result.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "#picture{\r\n    position: fixed;\r\n    top: 136px; \r\n    /* width: 100%;  */\r\n    padding: 20px;\r\n    display: block;\r\n    margin: 0 auto;\r\n    height: 292px;\r\n}\r\n\r\n#resultTextBlock {\r\n    width: 180px;\r\n    height: 60px;\r\n    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; \r\n    font-size: 21px;\r\n    text-align: center;\r\n    line-height: 18px;\r\n    color:      #000000;\r\n    background-color:      #FFFFFF;\r\n    display: block;\r\n    margin: 0 auto;\r\n    position: relative;\r\n    top: 450px; \r\n\r\n}"
+module.exports = "#picture{\r\n    padding: 20px;\r\n    display: block;\r\n    margin: 0 auto;\r\n    margin-top: 5px;\r\n    margin-bottom: 20px;\r\n    height: 292px;\r\n    -webkit-transfrom: scaleX(-1);\r\n    -webkit-transform: scaleX(-1);\r\n            transform: scaleX(-1);\r\n\r\n}\r\n\r\n#resultTextBlock {\r\n    width: 180px;\r\n    height: 60px;\r\n    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; \r\n    font-size: 21px;\r\n    text-align: center;\r\n    line-height: 18px;\r\n    color:      #000000;\r\n    background-color:      #FFFFFF;\r\n    display: block;\r\n    margin: 0 auto;\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/age-result/age-result.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-top-menu></app-top-menu>\r\n<div id=\"result\">\r\n  <img id=\"picture\" src=\"data:image/jpg;base64,{{m_imgDataBASE64}}\">\r\n  <p id=\"resultTextBlock\">\r\n    {{m_resultText}}\r\n</div>"
+module.exports = "<app-top-menu></app-top-menu>\r\n<img id=\"picture\" src=\"{{m_imgDataBASE64}}\">\r\n<p id=\"resultTextBlock\">\r\n  {{m_resultText}}"
 
 /***/ }),
 
@@ -55,10 +55,12 @@ var AgeResultComponent = /** @class */ (function () {
     function AgeResultComponent(AppService, Router) {
         this.AppService = AppService;
         this.Router = Router;
+        this.m_ageGuess = 0;
     }
     AgeResultComponent.prototype.ngOnInit = function () {
         this.m_ageGuess = this.AppService.GetAgeGuess();
         this.m_imgDataBASE64 = this.AppService.GetBASE64();
+        // console.log(this.m_imgDataBASE64);
         if (this.m_ageGuess <= 18) {
             this.m_resultText = "Wow - you look " + this.m_ageGuess + ". You're not even old enough to use this app.";
         }
@@ -70,6 +72,9 @@ var AgeResultComponent = /** @class */ (function () {
         }
         else if (this.m_ageGuess > 55) {
             this.m_resultText = this.m_ageGuess + ". Like at good bottle of wine you age with grace.";
+        }
+        else if (this.m_ageGuess == 0 || this.m_ageGuess == null) {
+            this.m_resultText = "Hmm - something went wrong. Try again!";
         }
     };
     AgeResultComponent = __decorate([
@@ -208,17 +213,18 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_routing_module__ = __webpack_require__("./src/app/app-routing.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2__ = __webpack_require__("./node_modules/angularfire2/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__ = __webpack_require__("./node_modules/angularfire2/database/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__("./src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__capture_image_capture_image_component__ = __webpack_require__("./src/app/capture-image/capture-image.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__process_image_process_image_component__ = __webpack_require__("./src/app/process-image/process-image.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_service__ = __webpack_require__("./src/app/app.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__splash_screen_splash_screen_component__ = __webpack_require__("./src/app/splash-screen/splash-screen.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__age_result_age_result_component__ = __webpack_require__("./src/app/age-result/age-result.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__top_menu_top_menu_component__ = __webpack_require__("./src/app/top-menu/top-menu.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__main_screen_main_screen_component__ = __webpack_require__("./src/app/main-screen/main-screen.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/animations.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2__ = __webpack_require__("./node_modules/angularfire2/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__ = __webpack_require__("./node_modules/angularfire2/database/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_component__ = __webpack_require__("./src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__capture_image_capture_image_component__ = __webpack_require__("./src/app/capture-image/capture-image.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__process_image_process_image_component__ = __webpack_require__("./src/app/process-image/process-image.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_service__ = __webpack_require__("./src/app/app.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__splash_screen_splash_screen_component__ = __webpack_require__("./src/app/splash-screen/splash-screen.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__age_result_age_result_component__ = __webpack_require__("./src/app/age-result/age-result.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__top_menu_top_menu_component__ = __webpack_require__("./src/app/top-menu/top-menu.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__main_screen_main_screen_component__ = __webpack_require__("./src/app/main-screen/main-screen.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -229,7 +235,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -247,24 +253,24 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_8__capture_image_capture_image_component__["a" /* CaptureImageComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__process_image_process_image_component__["a" /* ProcessImageComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__splash_screen_splash_screen_component__["a" /* SplashScreenComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__age_result_age_result_component__["a" /* AgeResultComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__top_menu_top_menu_component__["a" /* TopMenuComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__main_screen_main_screen_component__["a" /* MainScreenComponent */]
+                __WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__capture_image_capture_image_component__["a" /* CaptureImageComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__process_image_process_image_component__["a" /* ProcessImageComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__splash_screen_splash_screen_component__["a" /* SplashScreenComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__age_result_age_result_component__["a" /* AgeResultComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__top_menu_top_menu_component__["a" /* TopMenuComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__main_screen_main_screen_component__["a" /* MainScreenComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2__app_routing_module__["a" /* AppRoutingModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["b" /* HttpClientModule */],
-                // BrowserAnimationsModule,
-                __WEBPACK_IMPORTED_MODULE_4_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_6__environments_environment__["a" /* environment */].firebaseConfig),
-                __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__["a" /* AngularFireDatabaseModule */]
+                __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
+                __WEBPACK_IMPORTED_MODULE_5_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_7__environments_environment__["a" /* environment */].firebaseConfig),
+                __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabaseModule */]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_10__app_service__["a" /* AppService */]],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* AppComponent */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_11__app_service__["a" /* AppService */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -311,6 +317,24 @@ var AppService = /** @class */ (function () {
     };
     AppService.prototype.GetAgeGuess = function () {
         return this.m_Age;
+    };
+    AppService.prototype.MakeAndGetBlob = function () {
+        var BASE64_MARKER = ';base64,';
+        if (this.m_BASE64.indexOf(BASE64_MARKER) == -1) {
+            var parts_1 = this.m_BASE64.split(',');
+            var contentType_1 = parts_1[0].split(':')[1];
+            var raw_1 = decodeURIComponent(parts_1[1]);
+            return new Blob([raw_1], { type: contentType_1 });
+        }
+        var parts = this.m_BASE64.split(BASE64_MARKER);
+        var contentType = parts[0].split(':')[1];
+        var raw = window.atob(parts[1]);
+        var rawLength = raw.length;
+        var uInt8Array = new Uint8Array(rawLength);
+        for (var i = 0; i < rawLength; ++i) {
+            uInt8Array[i] = raw.charCodeAt(i);
+        }
+        return new Blob([uInt8Array], { type: contentType });
     };
     AppService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
@@ -462,20 +486,30 @@ var MainScreenComponent = /** @class */ (function () {
     }
     MainScreenComponent.prototype.takePicture = function () {
         if (device.platform == "Android") {
-            // Found it necessary to to use '.bind()' in order to maintain the scope/context. 
-            // The AppService and Router are available to the component class, and the context is lost in a 
+            // In order to make sure I can access the camera through the cordova pluging, I need to make sure the 'deviceready' event has triggered. 
+            // That is why I've added an eventlistener here. 
+            // Found it necessary to to use '.bind()' in order to maintain or carry the scope/context on to the callback function. 
+            // The AppService and Router are available to the component class, and the context is lost in a callback function. 
             document.addEventListener("deviceready", this.openCamera.bind(this));
-            // this.openCamera();
         }
         else if (device.platform == "browser") {
-            // this.Router.navigate(["/take-picture"]);
-            this.openCamera();
+            this.Router.navigate(["/take-picture"]);
         }
     };
     MainScreenComponent.prototype.openCamera = function () {
+        // When the native camera is active, this app is set "on-hold" by the device, and pushed to the background. 
+        // Upon return to this app, I experienced some issues with the getting the router to navigate to the next component.
+        // As far as I can tell and on the basis of research, it is because an uncaught error in this component. 
+        // Whether it is caused by the native camera or the component, I don't know, but I think it must be an angular error, seeing as it keeps the angular router from moving on. 
+        // Anyway - importing the NgZone angular module, and using the 'this.Zone.run()' method, I'm able to force it to run what-ever is inside that. 
+        // This will then snap it out of what-ever-it-is-stock-(not)-doing, and force it through. 
         var _this = this;
+        // This is also why I found it necessary to exclude the animation import from app.module.ts', because it is aparently in this module the the bug is?    
+        // If i didn't exclude it, the router would not properly run the 'Destroy' life cycle hook, and remove the component from the DOM. 
+        // Instead of removing or replacing the current component, it would simply add the next component to the DOM. 
+        // And seeing as the next component would not be loaded properly, the 'ngOnInit()' and the other life cycle hook would not be triggered.  
         navigator.camera.getPicture(function (data) {
-            _this.AppService.SaveBASE64(data);
+            _this.AppService.SaveBASE64("data:image/png;base64," + data);
             _this.Zone.run(function () {
                 _this.Router.navigate(["/proces-picture"]);
             });
@@ -483,11 +517,12 @@ var MainScreenComponent = /** @class */ (function () {
             alert("Unable to obtain camera app: " + error);
         }, {
             sourceType: 1,
-            quality: 50,
+            quality: 100,
             destinationType: 0,
             allowEdit: false,
             correctOrientation: true,
-            cameraDirection: 0,
+            cameraDirection: 1,
+            encodingType: 0
         });
     };
     MainScreenComponent = __decorate([
@@ -510,14 +545,14 @@ var MainScreenComponent = /** @class */ (function () {
 /***/ "./src/app/process-image/process-image.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n#picture{\r\n    padding: 20px;\r\n    display: block;\r\n    margin: 0 auto;\r\n    margin-top: 20px;\r\n    margin-bottom: 20px;\r\n    height: 292px;\r\n}\r\n\r\n#searchGif {\r\n    width: 100px;\r\n    height: 100px;\r\n    display: block;\r\n    margin: 0 auto;\r\n    margin-bottom:0px;\r\n}\r\n\r\n#processingTextBlock {\r\n    width: 180px;\r\n    height: 60px;\r\n    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; \r\n    font-size: 21px;\r\n    text-align: center;\r\n    line-height: 18px;\r\n    color:      #000000;\r\n    background-color:      #FFFFFF;\r\n    display: block;\r\n    margin: 0 auto;\r\n}"
+module.exports = "#picture{\r\n    padding: 20px;\r\n    display: block;\r\n    margin: 0 auto;\r\n    margin-top: 78px;\r\n    margin-bottom: 5px;\r\n    height: 292px;\r\n    -webkit-transfrom: scaleX(-1);\r\n    -webkit-transform: scaleX(-1);\r\n            transform: scaleX(-1);\r\n}\r\n\r\n#searchGif {\r\n    width: 100px;\r\n    height: 100px;\r\n    display: block;\r\n    margin: 0 auto;\r\n    margin-bottom:0px;\r\n}\r\n\r\n#processingTextBlock {\r\n    width: 180px;\r\n    height: 60px;\r\n    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; \r\n    font-size: 21px;\r\n    text-align: center;\r\n    line-height: 18px;\r\n    color:      #000000;\r\n    background-color:      #FFFFFF;\r\n    display: block;\r\n    margin: 0 auto;\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/process-image/process-image.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<img id=\"picture\" src=\"data:image/jpg;base64,{{m_imgDataBASE64}}\">\r\n<img id=\"searchGif\" src=\"./assets/Images/Magnify-1s-200px.gif\">\r\n<p id=\"processingTextBlock\">\r\n  {{m_processingText}}\r\n</p>"
+module.exports = "<img id=\"picture\" src=\"{{m_imgDataBASE64}}\">\r\n<img id=\"searchGif\" src=\"./assets/Images/Magnify-1s-200px.gif\">\r\n<p id=\"processingTextBlock\">\r\n  {{m_processingText}}\r\n</p>"
 
 /***/ }),
 
@@ -555,29 +590,11 @@ var ProcessImageComponent = /** @class */ (function () {
     ProcessImageComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.m_imgDataBASE64 = this.AppService.GetBASE64();
-        this.m_imgDataBlob = this.MakeBlob(this.m_imgDataBASE64);
+        this.m_imgDataBlob = this.AppService.MakeAndGetBlob();
         this.CallObserver(this.m_imgDataBlob);
         setTimeout(function () {
             _this.Router.navigate(["/age-result"]);
         }, 3000);
-    };
-    ProcessImageComponent.prototype.MakeBlob = function (_imgData) {
-        var BASE64_MARKER = ';base64,';
-        if (_imgData.indexOf(BASE64_MARKER) == -1) {
-            var parts_1 = _imgData.split(',');
-            var contentType_1 = parts_1[0].split(':')[1];
-            var raw_1 = decodeURIComponent(parts_1[1]);
-            return new Blob([raw_1], { type: contentType_1 });
-        }
-        var parts = _imgData.split(BASE64_MARKER);
-        var contentType = parts[0].split(':')[1];
-        var raw = window.atob(parts[1]);
-        var rawLength = raw.length;
-        var uInt8Array = new Uint8Array(rawLength);
-        for (var i = 0; i < rawLength; ++i) {
-            uInt8Array[i] = raw.charCodeAt(i);
-        }
-        return new Blob([uInt8Array], { type: contentType });
     };
     ProcessImageComponent.prototype.CallObserver = function (_imgDataBlob) {
         var _this = this;
@@ -593,6 +610,7 @@ var ProcessImageComponent = /** @class */ (function () {
         var httpHeaders = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]()
             .set('Content-Type', 'application/octet-stream')
             .set('ocp-apim-subscription-key', __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].visonConfig.apiKey);
+        console.log(_imgDataBlob);
         return this.http.post(url, _imgDataBlob, {
             headers: httpHeaders,
             responseType: 'json'
@@ -671,14 +689,14 @@ var SplashScreenComponent = /** @class */ (function () {
 /***/ "./src/app/top-menu/top-menu.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "#topMenu {\r\n    height: 60px;\r\n    border-style: none;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: black;\r\n    border-width: 3px; \r\n}\r\n\r\n#logoTextImg {\r\n    position: absolute;\r\n    margin-left: 20px;\r\n    margin-top: 20px; \r\n    width: 180px;\r\n    height: 40px;\r\n}\r\n\r\n#btnMenuIcon{\r\n    position: relative;\r\n    width: 30px; \r\n    height: 25px;\r\n    margin-right: 20px; \r\n    margin-top: 22px;\r\n    float: right; \r\n}\r\n\r\np {\r\n    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; \r\n    font-size: 21px;\r\n    text-align: center;\r\n    line-height: 18px;\r\n    color:      #000000;\r\n    background-color:      #FFFFFF;\r\n}\r\n"
+module.exports = "#topMenu {\r\n    height: 70px;\r\n    border-style: none;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: black;\r\n    border-width: 3px; \r\n}\r\n\r\n#logoTextImg {\r\n    margin-left: 20px;\r\n    margin-top: 20px; \r\n    width: 180px;\r\n    height: 40px;\r\n}\r\n\r\n#btnMenuIcon{\r\n    width: 30px; \r\n    height: 25px;\r\n    margin-right: 20px; \r\n    margin-top: 22px;\r\n    float: right; \r\n}\r\n\r\n"
 
 /***/ }),
 
 /***/ "./src/app/top-menu/top-menu.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<img id=\"logoTextImg\" src=\"./assets/Images/Logo_text.png\">\r\n<img id=\"btnMenuIcon\" src=\"./assets/Images/menuLogo.png\">\r\n<div id=\"topMenu\">\r\n  <p id=\"\"></p>\r\n</div>"
+module.exports = "<div id=\"topMenu\">\r\n  <img id=\"logoTextImg\" src=\"./assets/Images/Logo_text.png\">\r\n  <img id=\"btnMenuIcon\" src=\"./assets/Images/menuLogo.png\">\r\n</div>"
 
 /***/ }),
 
@@ -749,7 +767,7 @@ var environment = {
         messagingSenderId: "330143653742"
     },
     visonConfig: {
-        apiKey: "1e778772e98e402d821ec1337f6d6ee8"
+        apiKey: "933bd114433e45ddbf31519178aca39a"
     }
 };
 // 1f4c853d821a41088d70abf594c7064e

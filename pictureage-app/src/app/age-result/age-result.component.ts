@@ -11,7 +11,7 @@ import { AppService } from './../app.service';
 })
 export class AgeResultComponent implements OnInit {
 
-  m_ageGuess: number;
+  m_ageGuess: number = 0;
   m_imgDataBASE64: string;
   m_resultText: string;
 
@@ -24,6 +24,7 @@ export class AgeResultComponent implements OnInit {
   ngOnInit() {
     this.m_ageGuess = this.AppService.GetAgeGuess();
     this.m_imgDataBASE64 = this.AppService.GetBASE64();
+    // console.log(this.m_imgDataBASE64);
 
     if (this.m_ageGuess <= 18) {
       this.m_resultText = "Wow - you look " + this.m_ageGuess + ". You're not even old enough to use this app.";
@@ -36,6 +37,9 @@ export class AgeResultComponent implements OnInit {
     }
     else if (this.m_ageGuess > 55) {
       this.m_resultText = this.m_ageGuess + ". Like at good bottle of wine you age with grace.";
+    }
+    else if (this.m_ageGuess == 0 || this.m_ageGuess == null) {
+      this.m_resultText = "Hmm - something went wrong. Try again!";
     }
 
   }
