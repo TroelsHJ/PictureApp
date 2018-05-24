@@ -30,7 +30,7 @@ export class ProcessImageComponent implements OnInit {
     this.CallObserver(this.m_imgDataBlob);
     setTimeout(() => {
       this.Router.navigate(["/age-result"]);
-    }, 3000);
+    }, 5000);
   }
 
   CallObserver(_imgDataBlob: Blob) {
@@ -52,7 +52,6 @@ export class ProcessImageComponent implements OnInit {
       .set('Content-Type', 'application/octet-stream')
       .set('ocp-apim-subscription-key', environment.visonConfig.apiKey);
 
-    console.log(_imgDataBlob);
     return this.http.post<any[]>(url, _imgDataBlob, {
       headers: httpHeaders,
       responseType: 'json'

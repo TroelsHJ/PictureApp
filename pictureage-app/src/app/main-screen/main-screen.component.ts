@@ -62,9 +62,7 @@ export class MainScreenComponent {
         quality: 100,
         destinationType: 0,
         allowEdit: false,
-        correctOrientation: true,
-        cameraDirection: 1,
-        encodingType: 0
+        correctOrientation: true
       }
     );
 

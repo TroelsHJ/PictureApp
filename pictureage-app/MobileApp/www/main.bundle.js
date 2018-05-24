@@ -521,8 +521,6 @@ var MainScreenComponent = /** @class */ (function () {
             destinationType: 0,
             allowEdit: false,
             correctOrientation: true,
-            cameraDirection: 1,
-            encodingType: 0
         });
     };
     MainScreenComponent = __decorate([
@@ -594,7 +592,7 @@ var ProcessImageComponent = /** @class */ (function () {
         this.CallObserver(this.m_imgDataBlob);
         setTimeout(function () {
             _this.Router.navigate(["/age-result"]);
-        }, 3000);
+        }, 5000);
     };
     ProcessImageComponent.prototype.CallObserver = function (_imgDataBlob) {
         var _this = this;
@@ -610,7 +608,6 @@ var ProcessImageComponent = /** @class */ (function () {
         var httpHeaders = new __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["c" /* HttpHeaders */]()
             .set('Content-Type', 'application/octet-stream')
             .set('ocp-apim-subscription-key', __WEBPACK_IMPORTED_MODULE_4__environments_environment__["a" /* environment */].visonConfig.apiKey);
-        console.log(_imgDataBlob);
         return this.http.post(url, _imgDataBlob, {
             headers: httpHeaders,
             responseType: 'json'
