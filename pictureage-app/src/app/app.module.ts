@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+// import { AngularFireModule } from 'angularfire2';
+// import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
@@ -32,8 +32,8 @@ import { MainScreenComponent } from './main-screen/main-screen.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    // AngularFireModule.initializeApp(environment.firebaseConfig),
+    // AngularFireDatabaseModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

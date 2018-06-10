@@ -214,17 +214,14 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_routing_module__ = __webpack_require__("./src/app/app-routing.module.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/animations.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2__ = __webpack_require__("./node_modules/angularfire2/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__ = __webpack_require__("./node_modules/angularfire2/database/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__environments_environment__ = __webpack_require__("./src/environments/environment.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_component__ = __webpack_require__("./src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__capture_image_capture_image_component__ = __webpack_require__("./src/app/capture-image/capture-image.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__process_image_process_image_component__ = __webpack_require__("./src/app/process-image/process-image.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_service__ = __webpack_require__("./src/app/app.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__splash_screen_splash_screen_component__ = __webpack_require__("./src/app/splash-screen/splash-screen.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__age_result_age_result_component__ = __webpack_require__("./src/app/age-result/age-result.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__top_menu_top_menu_component__ = __webpack_require__("./src/app/top-menu/top-menu.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__main_screen_main_screen_component__ = __webpack_require__("./src/app/main-screen/main-screen.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__("./src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__capture_image_capture_image_component__ = __webpack_require__("./src/app/capture-image/capture-image.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__process_image_process_image_component__ = __webpack_require__("./src/app/process-image/process-image.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_service__ = __webpack_require__("./src/app/app.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__splash_screen_splash_screen_component__ = __webpack_require__("./src/app/splash-screen/splash-screen.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__age_result_age_result_component__ = __webpack_require__("./src/app/age-result/age-result.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__top_menu_top_menu_component__ = __webpack_require__("./src/app/top-menu/top-menu.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__main_screen_main_screen_component__ = __webpack_require__("./src/app/main-screen/main-screen.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -244,33 +241,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-
-
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__capture_image_capture_image_component__["a" /* CaptureImageComponent */],
-                __WEBPACK_IMPORTED_MODULE_10__process_image_process_image_component__["a" /* ProcessImageComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__splash_screen_splash_screen_component__["a" /* SplashScreenComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__age_result_age_result_component__["a" /* AgeResultComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__top_menu_top_menu_component__["a" /* TopMenuComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__main_screen_main_screen_component__["a" /* MainScreenComponent */]
+                __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_6__capture_image_capture_image_component__["a" /* CaptureImageComponent */],
+                __WEBPACK_IMPORTED_MODULE_7__process_image_process_image_component__["a" /* ProcessImageComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__splash_screen_splash_screen_component__["a" /* SplashScreenComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__age_result_age_result_component__["a" /* AgeResultComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__top_menu_top_menu_component__["a" /* TopMenuComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__main_screen_main_screen_component__["a" /* MainScreenComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2__app_routing_module__["a" /* AppRoutingModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["b" /* HttpClientModule */],
                 __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
-                __WEBPACK_IMPORTED_MODULE_5_angularfire2__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_7__environments_environment__["a" /* environment */].firebaseConfig),
-                __WEBPACK_IMPORTED_MODULE_6_angularfire2_database__["a" /* AngularFireDatabaseModule */]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_11__app_service__["a" /* AppService */]],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_8__app_service__["a" /* AppService */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -485,6 +477,7 @@ var MainScreenComponent = /** @class */ (function () {
         this.m_dareText = "Dare you to press the camera and see how old we think you are";
     }
     MainScreenComponent.prototype.takePicture = function () {
+        // this.Router.navigate(["/take-picture"]);
         if (device.platform == "Android") {
             // In order to make sure I can access the camera through the cordova pluging, I need to make sure the 'deviceready' event has triggered. 
             // That is why I've added an eventlistener here. 
@@ -520,7 +513,7 @@ var MainScreenComponent = /** @class */ (function () {
             quality: 100,
             destinationType: 0,
             allowEdit: false,
-            correctOrientation: true,
+            correctOrientation: true
         });
     };
     MainScreenComponent = __decorate([
@@ -764,10 +757,9 @@ var environment = {
         messagingSenderId: "330143653742"
     },
     visonConfig: {
-        apiKey: "933bd114433e45ddbf31519178aca39a"
+        apiKey: "c3bb908b46a74414ab0e91a488bdca07"
     }
 };
-// 1f4c853d821a41088d70abf594c7064e
 
 
 /***/ }),

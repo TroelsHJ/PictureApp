@@ -22,6 +22,8 @@ export class MainScreenComponent {
   ) { }
 
   takePicture() {
+    // this.Router.navigate(["/take-picture"]);
+
     if (device.platform == "Android") {
       // In order to make sure I can access the camera through the cordova pluging, I need to make sure the 'deviceready' event has triggered. 
       // That is why I've added an eventlistener here. 
